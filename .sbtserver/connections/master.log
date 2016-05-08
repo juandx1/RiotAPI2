@@ -1,0 +1,55 @@
+New log file opened at Thu May 05 11:41:29 COT 2016 by 16012@DESKTOP-C9479N0
+Taking next connection to: 60621
+New client attempting to connect on port: 60627-60621
+  Address = /192.168.1.103:60621
+This client on port 60627 has uuid 96745198-b979-497a-af82-6f723700bce3 configName activator humanReadableName Activator protocolVersion 3 featureTags Vector()
+Connected Clients: activator-96745198-b979-497a-af82-6f723700bce3
+Taking next connection to: 60621
+New client attempting to connect on port: 60640-60621
+  Address = /192.168.1.103:60621
+Handshake exception on socket: 60640
+sbt.impl.ipc.HandshakeException: Unable to perform handshake
+	at sbt.impl.ipc.Peer.handshake(IPC.scala:46)
+	at sbt.impl.ipc.MultiClientServer.<init>(IPC.scala:150)
+	at sbt.server.SbtServerSocketHandler$$anon$1.run(SbtServerSocketHandler.scala:43)
+Caused by: java.net.SocketException: Software caused connection abort: recv failed
+	at java.net.SocketInputStream.socketRead0(Native Method)
+	at java.net.SocketInputStream.socketRead(SocketInputStream.java:116)
+	at java.net.SocketInputStream.read(SocketInputStream.java:170)
+	at java.net.SocketInputStream.read(SocketInputStream.java:141)
+	at java.io.BufferedInputStream.fill(BufferedInputStream.java:246)
+	at java.io.BufferedInputStream.read(BufferedInputStream.java:265)
+	at java.io.DataInputStream.readInt(DataInputStream.java:387)
+	at sbt.impl.ipc.Peer.receive(IPC.scala:95)
+	at sbt.impl.ipc.Peer.handshake(IPC.scala:49)
+	... 2 more
+Taking next connection to: 60621
+New client attempting to connect on port: 60641-60621
+  Address = /192.168.1.103:60621
+This client on port 60641 has uuid efdf63d5-a9fc-488d-9f2e-75d6a483c4fc configName activator humanReadableName Activator protocolVersion 3 featureTags Vector()
+Connected Clients: activator-96745198-b979-497a-af82-6f723700bce3, activator-efdf63d5-a9fc-488d-9f2e-75d6a483c4fc
+Taking next connection to: 60621
+New client attempting to connect on port: 60647-60621
+  Address = /192.168.1.103:60621
+Handshake exception on socket: 60647
+sbt.impl.ipc.HandshakeException: Unable to perform handshake
+	at sbt.impl.ipc.Peer.handshake(IPC.scala:46)
+	at sbt.impl.ipc.MultiClientServer.<init>(IPC.scala:150)
+	at sbt.server.SbtServerSocketHandler$$anon$1.run(SbtServerSocketHandler.scala:43)
+Caused by: java.io.EOFException
+	at java.io.DataInputStream.readInt(DataInputStream.java:392)
+	at sbt.impl.ipc.Peer.receive(IPC.scala:95)
+	at sbt.impl.ipc.Peer.handshake(IPC.scala:49)
+	... 2 more
+Taking next connection to: 60621
+New client attempting to connect on port: 60648-60621
+  Address = /192.168.1.103:60621
+This client on port 60648 has uuid 241ca40b-3737-45de-ba3c-a6c20d70303c configName activator humanReadableName Activator protocolVersion 3 featureTags Vector()
+Connected Clients: activator-96745198-b979-497a-af82-6f723700bce3, activator-efdf63d5-a9fc-488d-9f2e-75d6a483c4fc, activator-241ca40b-3737-45de-ba3c-a6c20d70303c
+Taking next connection to: 60621
+Checking to see if clients are empty...
+No non-daemon clients connected after 3 min. Shutting down.
+Server socket thread exiting.
+0 clients open, will close them...
+All client sockets have been closed.
+Closing the 16012@DESKTOP-C9479N0 logs at Thu May 05 11:45:06 COT 2016, goodbye.
