@@ -7,14 +7,13 @@ import dao.RegionDAO;
 import dao.TopChampionsDAO;
 import dto.*;
 import models.Region;
-import models.Topchampions;
 import play.libs.Json;
 import play.libs.ws.WSClient;
 import play.libs.ws.WSResponse;
 import play.mvc.Controller;
 import play.mvc.Result;
 import scala.concurrent.ExecutionContextExecutor;
-import views.html.index;
+import views.html.home;
 
 import javax.inject.Inject;
 import javax.persistence.EntityManagerFactory;
@@ -54,7 +53,7 @@ public class HomeController extends Controller {
      * <code>GET</code> request with a path of <code>/</code>.
      */
     public Result index() {
-        return ok(index.render("Your new application is ready."));
+        return ok(home.render());
     }
 
     public Result index(long summonerId, String region) {
@@ -121,7 +120,7 @@ public class HomeController extends Controller {
             return "";
         });
         summonerDTO.champions = topchampions;
-        return ok(index.render(""));
+        return ok(home.render());
     }
 
 }

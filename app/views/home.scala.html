@@ -1,0 +1,15 @@
+@layout("Masterify"){
+    <div class="section" id="section1">
+        <div class="centered">
+            <div class="welcome-text">Welcome to <span>Masterify.</span><br> First let us know your summoner name and region. Get ready for awesome stuff!</div>
+            <input type="text" placeholder="Summoner name">
+            <button type="submit">Go</button>
+        </div>
+        <div id="logo"><img src="@routes.Assets.versioned("images/logo.png")" alt="Logo"></div>
+    </div>
+    <div class="section" id="section2"></div>
+
+    <audio id="song" src="@routes.Assets.versioned("sounds/lolsong.mp3")">
+        <p>If you are reading this, it is because your browser does not support the audio element.</p>
+    </audio>
+}
