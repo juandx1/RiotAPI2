@@ -63,7 +63,7 @@ public class HomeController extends Controller {
         summonerDTO.summonerId = summonerId;
         String URL = actualRegion.getHost() + "championmastery/location/" + actualRegion.getPlatformId() + "/player/" + summonerId + "/topchampions?count=4&" + API_KEY;
         CompletionStage<JsonNode> masteryStats = wsClient.url(URL).get().thenApply(WSResponse::asJson);
-        List<ChampionMasteryDTO> topchampions = new ArrayList<>();
+        List<ChampionDTO> topchampions = new ArrayList<>();
         masteryStats.handle((jsonNode, throwable) -> {
             String rankedUrl = actualRegion.getHost() + "api/lol/" + actualRegion.getPlatform() + "/v1.3/stats/by-summoner/" + summonerId + "/ranked?season=SEASON2016&" + API_KEY;
             CompletionStage<JsonNode> rankedStats = wsClient.url(rankedUrl).get().thenApply(WSResponse::asJson);
@@ -74,13 +74,23 @@ public class HomeController extends Controller {
                     JsonNode node = jsonNodeIterator.next();
                     ChampionMasteryDTO championMasteryDTO = Json.fromJson(node, ChampionMasteryDTO.class);
                     ChampionStatsDTO championStatsDTO = null;
-                    for (int i = 0; i < rankedStatsDTO.champions.size() && championStatsDTO == null; i++) {
+                    ChampionDTO championDTO = null;
+                    for (int i = 0; i < rankedStatsDTO.champions.size() && championDTO == null; i++) {
                         if (rankedStatsDTO.champions.get(i).id == championMasteryDTO.championId) {
                             championStatsDTO = rankedStatsDTO.champions.get(i);
+                            championDTO = new ChampionDTO();
+                            championDTO.assits = championStatsDTO.stats.totalAssists;
+                            championDTO.championId = championStatsDTO.id;
+                            championDTO.deaths = championStatsDTO.stats.totalDeathsPerSession;
+                            championDTO.games = championStatsDTO.stats.totalSessionsPlayed;
+                            championDTO.gold = championStatsDTO.stats.totalGoldEarned;
+                            championDTO.kills = championStatsDTO.stats.totalChampionKills;
+                            championDTO.wins = championStatsDTO.stats.totalSessionsWon;
+                            championDTO.losses = championStatsDTO.stats.totalSessionsLost;
                         }
                     }
-                    if (championStatsDTO != null) {
-                        topchampions.add(championMasteryDTO);
+                    if (championDTO != null) {
+                        topchampions.add(championDTO);
                     }
                 }
                 String urlRecent = actualRegion.getHost() + "api/lol/" + actualRegion.getPlatform() + "/v1.3/game/by-summoner/" + summonerId + "/recent?" + API_KEY;
@@ -88,11 +98,13 @@ public class HomeController extends Controller {
                 recent.handle((jsonNode2, throwable2) -> {
                     RecentGamesDTO recentGamesDTO = Json.fromJson(jsonNode2, RecentGamesDTO.class);
                     for (GameDTO gameDTO : recentGamesDTO.games) {
-                        ChampionMasteryDTO topchampions1 = null;
-                        for (int j = 0; j < topchampions.size() && topchampions1 == null; j++) {
+                        ChampionDTO topchampion = null;
+                        for (int j = 0; j < topchampions.size() && topchampion == null; j++) {
                             if (topchampions.get(j).championId == gameDTO.championId) {
-                                topchampions1 = topchampions.get(j);
+                                topchampion = topchampions.get(j);
                             }
+                        }
+                        if(topchampion!=null){
                         }
                     }
                     return "";
@@ -101,7 +113,6 @@ public class HomeController extends Controller {
             });
             return "";
         });
-
         return ok(index.render(""));
     }
 
