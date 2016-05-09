@@ -10,5 +10,5 @@ public class SummonerDTO {
 
     public long summonerId;
 
-    public List<ChampionMasteryDTO> champions = new ArrayList<>();
+    public List<ChampionDTO> champions = new ArrayList<>();
 }

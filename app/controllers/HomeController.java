@@ -102,9 +102,16 @@ public class HomeController extends Controller {
                         for (int j = 0; j < topchampions.size() && topchampion == null; j++) {
                             if (topchampions.get(j).championId == gameDTO.championId) {
                                 topchampion = topchampions.get(j);
+                                BuildDTO buildDTO = new BuildDTO();
+                                buildDTO.item0 = gameDTO.stats.item0;
+                                buildDTO.item1 = gameDTO.stats.item1;
+                                buildDTO.item2 = gameDTO.stats.item2;
+                                buildDTO.item3 = gameDTO.stats.item3;
+                                buildDTO.item4 = gameDTO.stats.item4;
+                                buildDTO.item5 = gameDTO.stats.item5;
+                                buildDTO.item6 = gameDTO.stats.item6;
+                                topchampion.buildDTO = buildDTO;
                             }
-                        }
-                        if(topchampion!=null){
                         }
                     }
                     return "";
@@ -113,6 +120,7 @@ public class HomeController extends Controller {
             });
             return "";
         });
+        summonerDTO.champions = topchampions;
         return ok(index.render(""));
     }
 
