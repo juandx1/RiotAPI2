@@ -1,0 +1,68 @@
+body
+  font-family 'Open Sans'
+
+  #section1
+    background url("../images/bg1.jpg")
+    height 100vh
+    background-position center center
+    background-repeat no-repeat
+    background-size: cover
+    display flex
+    justify-content center
+    align-items center
+    position relative
+
+    .centered
+      border-radius 5px
+      max-width 750px
+      text-align center
+
+      .welcome-text
+        font-size 30px
+        color white
+        text-shadow 2px 2px 5px #080808
+        margin-bottom 20px
+
+        span
+          font-weight 600
+
+    #logo
+      position absolute
+      left 0
+      bottom 0
+
+      img
+        height 130px
+
+  input
+    background transparent
+    border none
+    outline none
+    color white
+    font-size 20px
+    border-bottom 1px solid #B89264
+    text-align center
+    text-shadow 2px 2px 5px #080808
+
+    &::-webkit-input-placeholder {
+      text-align center
+    }
+
+    &:-moz-placeholder { /* Firefox 18- */
+      text-align center
+    }
+
+    &::-moz-placeholder {  /* Firefox 19+ */
+      text-align center
+    }
+
+    &:-ms-input-placeholder {
+      text-align center
+    }
+
+  #section2
+    background url("../images/bg2.jpg")
+    height 100vh
+    background-position center center
+    background-repeat no-repeat
+    background-size: cover
