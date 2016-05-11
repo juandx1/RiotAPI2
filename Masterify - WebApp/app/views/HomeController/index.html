@@ -1,0 +1,203 @@
+#{extends 'main.html' /}
+#{set title:'Masterify' /}
+
+<div id="top-bar">
+	<input type="text" placeholder="Summoner name" id="summoner-input2">
+	<div class="ui selection dropdown" id="dropdownregion">
+		<input type="hidden" id="region-input2">
+		<i class="dropdown icon"></i>
+		<div class="default text">Region</div>
+		<div class="menu">
+			<div class="item" data-value="EUN1">EUNE</div>
+			<div class="item" data-value="EUW">EUW1</div>
+			<div class="item" data-value="RU">RU</div>
+			<div class="item" data-value="TR1">TR</div>
+			<div class="item" data-value="NA1">NA</div>
+			<div class="item" data-value="BR1">BR</div>
+			<div class="item" data-value="LA1">LAN</div>
+			<div class="item" data-value="LA2">LAS</div>
+			<div class="item" data-value="JP1">JP</div>
+			<div class="item" data-value="KR">KR</div>
+			<div class="item" data-value="OC1">OCE</div>
+		</div>
+	</div>
+	<button id="go" onclick="executeApp2()">GO</button>
+	<div id="error-message1">Write a summoner name and select a region first.</div>
+</div>
+<div id="logo">
+	<img src="@{'public/images/logo.png'}" alt="Logo">
+</div>
+<div id="about-div">
+	<a href="#" id="a-about" onclick="displayAbout()">ABOUT</a>
+	<a href="#" id="a-home" onclick="displayHome()">HOME</a>
+	<a href="#" id="a-home1" onclick="displayHome2()">HOME</a>
+</div>
+<div class="section" id="section1">
+	<div class="centered">
+		<div id="first-container">
+			<div class="user-champions"></div>
+			<div class="frame-container">
+				<div class="frame-bg" id="user-champion-bg"></div>
+				<img src="" alt="Champion" class="champion-square" id="user-champion-square">
+				<div class="frame"></div>
+				<div class="champion-name" id="user-champion-name"></div>
+				<div class="info-container">
+					<div class="inner-section">
+						<div class="titulo">Your Stats</div>
+						<div class="contenido">
+							<table>
+								<tr><td class="thead">Kills:</td><td class="tdata uno" id="kills"></td><td class="thead">W/L:</td><td class="tdata" id="wl"></td></tr>
+								<tr><td class="thead">Deaths:</td><td class="tdata uno" id="deaths"></td><td class="thead">Gold:</td><td class="tdata" id="gold"></td></tr>
+								<tr><td class="thead">Assists:</td><td class="tdata uno" id="assists"></td><td class="thead">Games:</td><td class="tdata" id="games"></td></tr>
+							</table>
+							<div id="suggestion"></div>
+						</div>
+					</div>
+					<div class="inner-section mid">
+						<div id="radarChart"></div>
+					</div>
+					<div class="inner-section">
+						<div class="titulo">World's Best</div>
+						<div class="contenido">
+							<table>
+								<tr><td class="thead">Kills:</td><td class="tdata uno" id="kills1"></td><td class="thead">W/L:</td><td class="tdata" id="wl1"></td></tr>
+								<tr><td class="thead">Deaths:</td><td class="tdata uno" id="deaths1"></td><td class="thead">Gold:</td><td class="tdata" id="gold1"></tr>
+								<tr><td class="thead">Assists:</td><td class="tdata uno" id="assists1"></td><td class="thead">Games:</td><td class="tdata" id="games1"></td></tr>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="welcome">
+			<div class="welcome-text">Welcome to <span>Masterify.</span><br>
+				First, let us know your summoner name and region.</div>
+				<input type="text" placeholder="Summoner name" id="summoner-input">
+				<div class="ui selection dropdown" id="dropdownregion">
+					<input type="hidden" id="region-input">
+					<i class="dropdown icon"></i>
+					<div class="default text">Region</div>
+					<div class="menu">
+						<div class="item" data-value="EUN1">EUNE</div>
+						<div class="item" data-value="EUW">EUW1</div>
+						<div class="item" data-value="RU">RU</div>
+						<div class="item" data-value="TR1">TR</div>
+						<div class="item" data-value="NA1">NA</div>
+						<div class="item" data-value="BR1">BR</div>
+						<div class="item" data-value="LA1">LAN</div>
+						<div class="item" data-value="LA2">LAS</div>
+						<div class="item" data-value="JP1">JP</div>
+						<div class="item" data-value="KR">KR</div>
+						<div class="item" data-value="OC1">OCE</div>
+					</div>
+				</div>
+				<button id="go" onclick="executeApp()">GO</button>
+				<div id="error-message">Write a summoner name and select a region first.</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="divider"></div>
+<div class="section" id="section2">
+	<div class="centered">
+		<div class="top-champions">
+			<div>
+				<a href="#" id="a-top-1">
+					<div class="champion">
+						<div class="champ-img" id="img-top-1"></div>
+						<div class="champ-name" id="name-top-1"></div>
+					</div>
+				</a>
+			</div>
+			<div>
+				<a href="#" id="a-top-2">
+					<div class="champion">
+						<div class="champ-img" id="img-top-2"></div>
+						<div class="champ-name" id="name-top-2"></div>
+					</div>
+				</a>
+			</div>
+			<div>
+				<a href="#" id="a-top-3">
+					<div class="champion">
+						<div class="champ-img" id="img-top-3"></div>
+						<div class="champ-name" id="name-top-3"></div>
+					</div>
+				</a>
+			</div>
+			<div>
+				<a href="#" id="a-top-4">
+					<div class="champion">
+						<div class="champ-img" id="img-top-4"></div>
+						<div class="champ-name" id="name-top-4"></div>
+					</div>
+				</a>
+			</div>
+			<div>
+				<a href="#" id="a-top-5">
+					<div class="champion">
+						<div class="champ-img" id="img-top-5"></div>
+						<div class="champ-name" id="name-top-5"></div>
+					</div>
+				</a>
+			</div>
+		</div>
+		<div class="chart-container">
+			<div class="title">Select one of the left champions (Top 5 mastered champions in the world). Then you'll see a chart with the percentage of players for every region that masters that champion.</div>
+		</div>
+	</div>
+</div>
+
+<div class="section" id="section3">
+	<div class="centered">
+		<div class="title">The Making of Masterify</div>
+		<div class="text">
+			<div class="textTitle">IDEA</div>
+			The main idea of the app was to bring players the chance to compare his average stats and builds of the champions he had mastered with level 5 mastery with the player that have the best performance in the world with those champions in the data gathered from all regions. However, we realised that defining an average build of a player's champion was not easy an that we maybe couldn't finish it on time for the API Challenge, for those reasons we decided to take that module out of the app and focus on the stats comparison.
+		</div>
+		<div class="text">
+			<div class="textTitle">DATA GATHERING AND PROCESING</div>
+			We decided to use a technique of data gathering we learned before in another challenge that consist in gathering the data of some player in a region and look for others that have played with him (Only ranked games give us the information we wanted) and repeat the process with them recursively.
+			<br>
+			We used an standalone java application to gather the data. This app realized 3 requests to Riot's API: 1. <a target="_blank" href="https://developer.riotgames.com/api/methods#!/1071/3692">Mastery API</a>. 2. <a target="_blank" href="https://developer.riotgames.com/api/methods#!/1080/3725">Ranked Stats</a>. 3 <a target="_blank" href="https://developer.riotgames.com/api/methods#!/1078/3718">Recent Games</a>.
+			<br>
+			You can find the standalone java application used to gather data in the <a target="_blank" href="https://github.com/juandx1/RiotAPI2/tree/master/RiotData">project's github repository</a>. This app uses different technologies to acomplish it's function: JPA (Java Persistence API), that is in charge of mapping the database tables to model's POJO classes. GSON, a library that allows convertion of POJO objects to JSON and vice versa.
+			<br>
+			Aditionally, we used DTOs to temporaly storage the answers from the requests we made to Rio's API and then we save them in the database.
+		</div>
+		<div class="img"><img src="@{'public/images/about3.png'}" alt="AboutImg"></div>
+		<div class="text">
+			<div class="textTitle">WEB APP</div>
+			Initially we picked <a target="_blank" href="https://www.playframework.com/">Play's Framework</a> version 2.5.3 (JAVA based web framework). We were kind of new using this technology and for the momment we decided to deploy the app on the server, we had a really bad time doing it (Errors on request's to Riot's API and JAVA version problems) so we decided to roll back to the version of play framework that we totally know how to use (1.2.5.3 - we know... it's old but it works just fine for the app we made). This ended up on changing a lot of code in the controllers and views, and how we access to the database (MySQL). Play Framework implements the MVC pattern and it's architecture can be found <a target="_blank" href="https://www.playframework.com/documentation/1.0/images/diagrams_path"> here</a>.
+		</div>
+		<div class="img"><img src="@{'public/images/about2.jpg'}" alt="AboutImg"></div>
+		<div class="text">
+			The final app uses the data gathered in the first stage to provide the functionalities that we defined, this process consisted in making queries that provided us the different stats you see in the app, transform them into DTO classes that are inmediatly mapped into JSON and send them back to the user's explorer.
+		</div>
+		<div class="text">
+			<div class="textTitle">CALCULATIONS</div>
+			In the first module we compare a player's stats using one of his top champions with the best player in the world using the same champ. For determining the best player in the world with a champion we create the following function: <br><br>BPW = ((wins/games)*1000)+kills+(assits*0.1)-deaths+(gold/10000)<br><br> This is an arbitrary function we decided to create in order to give a player a skill number using the champion and get who is the best in the world with the champion. We had to multiply and divide to normalized the values that were too high or too low in the calculation.
+			<br>
+			Finally, for the second module you'll find the top 5 mastered champions in the world (The ones that most of the players have a level 5 mastery in all regions).
+		</div>
+		<div class="text">
+			<div class="textTitle">WEB DESING</div>
+			As we are not desingners, but experienced using image edition programs and love Riot's games image material, we edited some of their artwork and used some of their images. The firs logo proposal was so ugly :/.
+		</div>
+		<div class="img"><img src="@{'public/images/about1.jpg'}" alt="AboutImg"></div>
+		<div class="text">
+			<div class="textTitle">ATTRIBUTION</div>
+			Masterify isn't endorsed by Riot Games and doesn't reflect the views or opinions of Riot Games or anyone officially involved in producing or managing League of Legends. League of Legends and Riot Games are trademarks or registered trademarks of Riot Games, Inc. League of Legends © Riot Games, Inc.
+		</div>
+	</div>
+</div>
+
+<audio id="song">
+	<source src="@{'/public/sounds/lolsong.mp3'}" type="audio/mpeg">
+		<source src="@{'/public/sounds/lolsong.ogg'}" type="audio/ogg">
+		</audio>
+
+		<audio id="song1">
+			<source src="@{'/public/sounds/lolsong1.mp3'}" type="audio/mpeg">
+				<source src="@{'/public/sounds/lolsong1.ogg'}" type="audio/ogg">
+				</audio>
