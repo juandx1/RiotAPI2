@@ -40,7 +40,7 @@ import java.util.List;
 @Singleton
 public class HomeController extends Controller {
 
-	public static final String API_KEY = "api_key=<API_KEY>";
+	public static final String API_KEY = "api_key=490854b3-a5c6-4884-8608-e32561c626eb";
 
 	/**
 	 * An action that renders an HTML page with a welcome message. The
@@ -213,7 +213,7 @@ public class HomeController extends Controller {
 			championProbablityDTO.championSplashUrl = championDTO.championSplashUrl;
 			championProbablityDTO.championSquareUrl = championDTO.championSquareUrl;
 			String allWorld = "SELECT COUNT(*) FROM TopChampions tp";
-			String championWorld = "SELECT COUNT(tp.championId) FROM Topchampions tp where tp.championId=:championId order by championId";
+			String championWorld = "SELECT COUNT(*) FROM Topchampions tp where tp.championId=:championId group by tp.championId order by tp.championId";
 			Query queryAllWorld = JPA.em().createNativeQuery(allWorld);
 			Query queryChampionWorld = JPA.em()
 					.createNativeQuery(championWorld);
@@ -221,10 +221,11 @@ public class HomeController extends Controller {
 					championDTO.championId);
 			BigInteger countAllWorld = (BigInteger) queryAllWorld
 					.getResultList().get(0);
+			List b=queryChampionWorld.getResultList();
 			BigInteger countChampionWorld = (BigInteger) queryChampionWorld
 					.getResultList().get(0);
 			for (int i = 0; i < regions.length; i++) {
-				String championRegion = "SELECT COUNT(tp.championId) FROM Region r, Player p, Topchampions tp where r.platformId = p.platformId and p.summonerId = tp.summonerId and tp.championId=:championId and r.platform =:platform order by championId";
+				String championRegion = "SELECT COUNT(tp.*) FROM Region r, Player p, Topchampions tp where r.platformId = p.platformId and p.summonerId = tp.summonerId and tp.championId=:championId and r.platform =:platform group by tp.championId order by tp.championId";
 				String allRegion = "SELECT COUNT(*) FROM Region r, Player p, TopChampions tp where tp.summonerId = p.summonerId and p.platformId = r.platformId and r.platform =:platform";
 				Query queryChampionRegion = JPA.em().createNativeQuery(
 						championRegion);
